@@ -42,8 +42,10 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          Get.changeTheme(
-            Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+          debugPrint('Oh no');
+
+          Get.changeThemeMode(
+            Get.isDarkMode ? ThemeMode.light : ThemeMode.dark,
           );
         },
       ),
