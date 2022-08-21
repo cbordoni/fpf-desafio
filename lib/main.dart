@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:fpf_flutter/modules/home_page.dart';
+import 'package:fpf_flutter/modules/pages/home_page.dart';
 
-void main() => runApp(GetMaterialApp(
-  debugShowCheckedModeBanner: false,
-  initialRoute: "/",
-  defaultTransition: Transition.native,
-  locale: const Locale('pt', 'BR'),
-  getPages: [
-    GetPage(name: "/", page: () => const HomePage())
-  ],
-));
+void main() {
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    initialRoute: "/",
+    defaultTransition: Transition.cupertino,
+    locale: const Locale('pt', 'BR'),
+    getPages: [
+      GetPage(name: "/", page: () => HomePage()),
+    ],
+  ));
+}

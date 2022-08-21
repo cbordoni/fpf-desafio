@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:fpf_flutter/repositories/book_api.dart';
 import 'package:fpf_flutter/models/book.dart';
 
-class BooksController extends GetxController {
+class HomeController extends GetxController {
   List<Book> books = [];
   bool isLoading = true;
 
