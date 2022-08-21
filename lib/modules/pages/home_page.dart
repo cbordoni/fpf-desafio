@@ -44,6 +44,26 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              title: const Text('Dark Theme'),
+              trailing: ObxValue(
+                (data) => Switch(
+                    value: data.value,
+                    onChanged: (bool isDarkMode) async {
+                      Get.changeThemeMode(
+                          isDarkMode ? ThemeMode.dark : ThemeMode.light);
+
+                      data(isDarkMode);
+                    }),
+                Get.isDarkMode.obs,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
