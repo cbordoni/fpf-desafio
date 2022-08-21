@@ -23,31 +23,26 @@ class HomePage extends StatelessWidget {
     debugPrint('Building');
 
     return Scaffold(
-      appBar: AppBar(title: const Text("FPF Desafio")),
-      body: GetBuilder<HomeController>(
-        init: controller,
-        builder: (controller) {
-          if (controller.isLoading) {
-            return const Center(child: Text('Loading'));
-          }
-
-          return ListView.builder(
-            itemCount: controller.books.length,
-            itemBuilder: (context, index) {
-              return getTile(controller.books[index]);
-            },
-          );
+      appBar: AppBar(title: const Text('FPF Desafio')),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.fetchBooks();
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          debugPrint('Oh no');
+        child: GetBuilder<HomeController>(
+          init: controller,
+          builder: (controller) {
+            if (controller.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          Get.changeThemeMode(
-            Get.isDarkMode ? ThemeMode.light : ThemeMode.dark,
-          );
-        },
+            return ListView.builder(
+              itemCount: controller.books.length,
+              itemBuilder: (context, index) {
+                return getTile(controller.books[index]);
+              },
+            );
+          },
+        ),
       ),
     );
   }

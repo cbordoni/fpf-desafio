@@ -19,6 +19,7 @@ class HomeController extends GetxController {
     debugPrint('fetchBooks()');
 
     isLoading = true;
+    update();
 
     BookApi().fetchBooks().then((value) {
       books = value;
